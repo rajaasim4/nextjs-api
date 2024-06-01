@@ -2,6 +2,7 @@ import User from "@/Database/Db";
 import { NextResponse } from "next/server";
 
 export async function GET(request, content) {
+  console.log(request);
   let UserId = content.params.SingleUser;
   const filterdata = User.filter((item) => item.id == UserId);
   if (filterdata.length <= 0) {

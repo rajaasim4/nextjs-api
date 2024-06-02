@@ -1,4 +1,7 @@
 import Button from "@/Components/Button";
+import DeleteUser from "@/Components/DeleteUser";
+
+import Link from "next/link";
 
 const getSingleUser = async (id) => {
   const res = await fetch(`http://localhost:3000/api/Users/${id}`);
@@ -9,7 +12,7 @@ const getSingleUser = async (id) => {
 const SingleUser = async (props) => {
   let id = props.params.SingleUser;
   const data = await getSingleUser(id);
-  console.log(data);
+
   return (
     <div className="min-h-screen items-center flex py-20 flex-wrap px-20 gap-7 flex-col">
       <h1 className="text-3xl">User Details</h1>
@@ -31,6 +34,13 @@ const SingleUser = async (props) => {
           <strong>Address</strong> {data[0].address.street}
         </h3>
       </div>
+      <Link
+        href={`/Users/${id}/Update`}
+        className="border border-black rounded-md px-4 py-2"
+      >
+        Update
+      </Link>
+      <DeleteUser id={id} />
     </div>
   );
 };

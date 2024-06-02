@@ -11,3 +11,16 @@ export async function GET(request, content) {
     return NextResponse.json(filterdata);
   }
 }
+export async function PUT(request, content) {
+  let payload = await request.json();
+  let userid = content.params.SingleUser;
+  console.log(payload);
+  return NextResponse.json({ result: `data Added Successfully in ${payload}` });
+}
+export async function DELETE(request, content) {
+  let userid = content.params.SingleUser;
+
+  return NextResponse.json({
+    result: `data Deleted Successfully in ${userid}`,
+  });
+}

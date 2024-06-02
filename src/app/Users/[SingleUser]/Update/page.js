@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { toast } from "sonner";
 
-const Page = () => {
+const Page = (props) => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
@@ -20,18 +20,21 @@ const Page = () => {
     };
     console.log("Submitted Data:", formData);
     try {
-      const res = await axios.post("http://localhost:3000/api/Users", formData);
+      const res = await axios.put(
+        `http://localhost:3000/api/Users/${props.params.SingleUser}`,
+        formData
+      );
       console.log("Submitted Data:", res.data);
       toast.success("Form submitted successfully!");
     } catch (error) {
-      console.error("Error submitting form:", error.response.data.result);
-      toast.error(error.response.data.result);
+      console.error("Error submitting form:", error);
+      toast.error("Error Occured While Submitting the Form");
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col items-center py-20">
-      <h1 className="text-4xl">Add User Form</h1>
+      <h1 className="text-4xl">Update User Form</h1>
       <div className="pt-10">
         <div className="flex flex-col gap-y-2">
           <label htmlFor="name">Enter Name</label>

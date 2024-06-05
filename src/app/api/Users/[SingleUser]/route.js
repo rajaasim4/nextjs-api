@@ -1,6 +1,6 @@
 import User from "@/Database/Db";
 import { NextResponse } from "next/server";
-
+//Get Api Get Data based upon User
 export async function GET(request, content) {
   console.log(request);
   let UserId = content.params.SingleUser;
@@ -11,6 +11,7 @@ export async function GET(request, content) {
     return NextResponse.json(filterdata);
   }
 }
+//Post Api
 export async function PUT(request, content) {
   let payload = await request.json();
   let userid = content.params.SingleUser;

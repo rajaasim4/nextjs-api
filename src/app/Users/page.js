@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+//Get All User From APi
 const GetUsers = async () => {
   const res = await fetch("http://localhost:3000/api/Users");
   const data = await res.json();

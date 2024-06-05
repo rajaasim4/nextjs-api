@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { toast } from "sonner";
-
+//Update User Using the API
 const Page = (props) => {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");

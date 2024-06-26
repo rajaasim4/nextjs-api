@@ -2,25 +2,27 @@
 
 import axios from "axios";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const UploadImage = () => {
   const [file, setFile] = useState();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // const data = new FormData();
+    // data.append("file", file);
+    // const result = await axios.post("api/Upload", data);
 
-    const data = new FormData();
-    data.append("file", file);
-    const result = await axios.post("api/Upload", data);
+    try {
+      const data = new FormData();
+      data.set("file", file);
+      const res = await axios.post("api/Upload", data);
+      toast.success("Image added");
 
-    // try {
-    //   const data = new FormData();
-    //   data.set("file", file);
-    //   const res = await axios.post("api/Upload", data);
-
-    //   if (!res.ok) throw new Error(await res.text());
-    // } catch (e) {
-    //   console.error(e);
-    // }
+      if (!res.ok) throw new Error(await res.text());
+    } catch (e) {
+      toast.error("Error Occured");
+      console.error(e);
+    }
   };
 
   return (

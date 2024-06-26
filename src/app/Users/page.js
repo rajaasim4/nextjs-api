@@ -1,8 +1,11 @@
 import Link from "next/link";
 //Get All User From APi
 const GetUsers = async () => {
-  const res = await fetch("http://localhost:3000/api/Users");
+  const res = await fetch("http://localhost:3000/api/Users", {
+    cache: "no-store",
+  });
   const data = await res.json();
+  console.log(data);
   return data;
 };
 
@@ -16,7 +19,7 @@ const Users = async () => {
         {allUsers.map((item) => {
           return (
             <Link
-              href={`Users/${item.id}`}
+              href={`Users/${item._id}`}
               key={item.id}
               className="flex flex-col gap-2 p-3 border rounded-lg bg-white w-max my-2"
             >
@@ -38,7 +41,7 @@ const Users = async () => {
               </h3>
               <h3>
                 {" "}
-                <strong>Address</strong> {item.address.street}
+                <strong>Address</strong> {item?.address?.street}
               </h3>
             </Link>
           );

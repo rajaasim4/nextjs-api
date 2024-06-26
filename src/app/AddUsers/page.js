@@ -47,7 +47,7 @@ const Page = () => {
         <div className="flex flex-col gap-y-2">
           <label htmlFor="age">Enter Age</label>
           <input
-            type="text"
+            type="number"
             id="age"
             value={age}
             onChange={(e) => setAge(e.target.value)}
@@ -80,7 +80,7 @@ const Page = () => {
         <div className="flex flex-col gap-y-2">
           <label htmlFor="phone">Enter Phone Number</label>
           <input
-            type="text"
+            type="string"
             id="phone"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}

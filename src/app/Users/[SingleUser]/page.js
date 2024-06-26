@@ -4,8 +4,10 @@ import DeleteUser from "@/Components/DeleteUser";
 import Link from "next/link";
 
 const getSingleUser = async (id) => {
+  console.log(id);
   const res = await fetch(`http://localhost:3000/api/Users/${id}`);
   const data = await res.json();
+  console.log(data);
   return data;
 };
 
@@ -19,19 +21,19 @@ const SingleUser = async (props) => {
       <Button />
       <div className="flex flex-col gap-2 p-3 border rounded-lg bg-white w-max my-2 h-max">
         <h2>
-          <strong>Name:</strong> {data[0].name}
+          <strong>Name:</strong> {data?.name}
         </h2>
         <h3>
-          <strong>Age:</strong> {data[0].age}
+          <strong>Age:</strong> {data?.age}
         </h3>
         <h3>
-          <strong>Email:</strong> {data[0].email}
+          <strong>Email:</strong> {data?.email}
         </h3>
         <h3>
-          <strong>Qualification</strong> {data[0].education}
+          <strong>Qualification</strong> {data?.education}
         </h3>
         <h3>
-          <strong>Address</strong> {data[0].address.street}
+          <strong>Address</strong> {data?.address?.street}
         </h3>
       </div>
       <Link

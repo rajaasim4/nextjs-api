@@ -8,9 +8,6 @@ const UploadImage = () => {
   const [file, setFile] = useState();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const data = new FormData();
-    // data.append("file", file);
-    // const result = await axios.post("api/Upload", data);
 
     try {
       const data = new FormData();
